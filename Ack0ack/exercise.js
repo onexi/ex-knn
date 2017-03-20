@@ -13,12 +13,12 @@ exercise.measureDistances = function(rooms,area){
 	data.forEach(function(residence){
 		var deltaRooms = residence.rooms - rooms;
 		deltaRooms = deltaRooms / roomsRange; 
+
+		var deltaArea = residence.area - area;
+		deltaArea = deltaArea / areaRange;
+
+		residence.distance = Math.sqrt(deltaRooms * deltaRooms + deltaArea * deltaArea);
 	});
-
-	var deltaArea = residence.area - area;
-	deltaArea = deltaArea / areaRange;
-
-	residence.distance = Math.sqrt(deltaRooms * deltaRooms + deltaArea * deltaArea)
 	};
 	// ------------------------
 	// YOUR CODE
@@ -29,10 +29,11 @@ exercise.sortByDistance = function () {
 	data.sort(function(a,b){
 		return a.distance - b.distance;
 	});
+};
 	// ------------------------
 	// YOUR CODE
 	// ------------------------
-};
+
 
 exercise.guessType = function(k){
 
@@ -44,7 +45,7 @@ exercise.guessType = function(k){
 		if (nnType === 'apartment') types.apartment += 1;
 		if (nnType === 'flat') types.flat += 1;
 		if (nnType === 'house') types.house += 1;
-
+	}
 		var guess = {type: false, count:0};
 		for (var type in types){
 			if (types[type] > guess.count){
