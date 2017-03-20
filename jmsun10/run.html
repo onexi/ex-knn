@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<script src="data.js"></script>
+<script src="exercise.js"></script>
+<canvas id="canvas" width="400" height="400"></canvas>
+<script src="graph.js"></script>
+
+<script>
+
+function timer(){
+
+	// select k, new dwelling, random rooms/area
+	var k     = 3;
+	var rooms = Math.round( Math.random() * 9 );
+	var area  =  250 + Math.round( Math.random() * 1450 );
+	console.log('rooms: ' + rooms + ', area: ' + area);
+
+	// calculate distance between existing and new dwelling
+	exercise.measureDistances(rooms,area);
+
+	// find closest
+	exercise.sortByDistance();
+
+	// guess the dwelling type
+	var guess = exercise.guessType(k);
+
+	// graph the data
+	graphData();
+	drawKCircle(rooms,area,guess.type,k);
+	console.log(guess);
+	setTimeout(timer, 5000);
+}
+
+window.onload = timer();
+
+</script>
+
+</html>
