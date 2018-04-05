@@ -11,7 +11,7 @@ areaRange  = areaMax-areaMin;
 
 exercise.measureDistances = function(rooms,area){
 	// ------------------------
-	// YOUR CODE
+	// MY CODE
 	// ------------------------
 };
 
